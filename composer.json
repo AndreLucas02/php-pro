@@ -1,0 +1,21 @@
+{
+    "name": "andrelucas/ph",
+    "description": "php-pro",
+    "authors": [
+        {
+            "name": "Andre"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "files": [
+            "app/router/router.php"
+
+        ],
+        "psr-4": {
+            "app\\": "app"
+        }
+    }
+    
+   
+}
