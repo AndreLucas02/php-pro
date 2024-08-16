@@ -32,7 +32,7 @@ function params($uri, $matchedUri) {
     if(!empty($matchedUri)) {
         $matchedParams = array_keys($matchedUri)[0];
         return array_diff(
-            explode('/', ltrim($uri, '/')),
+            $uri,
             explode('/', ltrim($matchedParams, '/'))
         );
 
@@ -42,7 +42,6 @@ function params($uri, $matchedUri) {
 }
 
 function paramsFormat($uri, $params) {
-    $uri = explode('/', ltrim($uri, '/'));
     $paramsData = [];
     foreach ($params as $index => $param) {
         $paramsData = [$uri[$index - 1]] = $param;
@@ -60,6 +59,7 @@ function router()
     $matchedUri = exacUri($uri, $routes);
     if (empty($matchedUri)) {
         $matchedUri = regularRoutes($uri, $routes);
+        $uri =explode('/', ltrim($uri, '/'));
         $params= params($uri, $matchedUri);
         $params = paramsFormat($uri, $params);
 
